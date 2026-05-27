@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validador de Fraudes Bancárias</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Verificador de Telefone Bancário</h1>
+        <p>Digite o número que ligou para você (apenas números):</p>
+        
+        <form id="form-verificacao">
+            <input type="text" id="telefone" placeholder="Ex: 40040001" required autocomplete="off">
+            <button type="submit">Verificar Número</button>
+        </form>
+
+        <div id="resultado" class="oculto"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
