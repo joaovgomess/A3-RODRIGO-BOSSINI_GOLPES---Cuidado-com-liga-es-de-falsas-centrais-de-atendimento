@@ -47,9 +47,10 @@ function inicializarBanco() {
         if (err) throw err;
 
         const criarTabelaSQL = `
-            CREATE TABLE IF NOT EXISTS numeros_oficiais (
+            CREATE TABLE numeros_oficiais (
                 id INT AUTO_INCREMENT PRIMARY KEY,
-                banco VARCHAR(255) NOT NULL,
+                nome VARCHAR(255) NOT NULL,
+                tipo_contato VARCHAR(255) NOT NULL,
                 telefone VARCHAR(255) UNIQUE NOT NULL
             )
         `;
@@ -125,7 +126,7 @@ app.post('/api/verificar', (req, res) => {
         return res.status(400).json({ erro: "Número de telefone não fornecido." });
     }
 
-    const query = `SELECT banco FROM numeros_oficiais WHERE telefone = ?`;
+    const query = `SELECT nome, tipo_contato FROM numeros_oficiais WHERE telefone = ?`;
     
     db.query(query, [telefone], (err, results) => {
         if (err) {
@@ -135,9 +136,9 @@ app.post('/api/verificar', (req, res) => {
 
         // No mysql2, os resultados voltam como um array (lista)
         if (results.length > 0) {
-            res.json({ oficial: true, banco: results[0].banco });
+            res.json({ oficial: true, nome: results[0].nome, tipo_contato: results[0].tipo_contato});
         } else {
-            res.json({ oficial: false, banco: null });
+            res.json({oficial: false, nome: null, tipo_contato: null});
         }
     });
 });

@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (dados.oficial) {
                 divResultado.classList.add('oficial');
-                divResultado.textContent = `✅ Número Oficial: Este telefone é o/a ${dados.tipo_contato} do banco ${dados.nome}.`;
+                divResultado.textContent = `✅ Número Oficial: Este telefone é o/a ${dados.tipo_contato} do ${dados.nome}.`;
             } else {
                 divResultado.classList.add('fraude');
                 divResultado.textContent = `⚠️ Possível Fraude: Este número não consta na base de telefones oficiais.`;
