@@ -12,7 +12,7 @@ app.use(express.json());
 const dbConfig = {
     host: 'localhost',
     user: 'root',
-    password: '' 
+    password: 'root' 
 };
 
 // 2. Conectando ao servidor para garantir que o banco existe
@@ -77,7 +77,7 @@ app.post('/api/verificar', (req, res) => {
         return res.status(400).json({ erro: "Número de telefone não fornecido." });
     }
 
-    const query = SELECT banco FROM numeros_oficiais WHERE telefone = ?;
+    const query = `SELECT banco FROM numeros_oficiais WHERE telefone = ?`;
     
     db.query(query, [telefone], (err, results) => {
         if (err) {
@@ -95,5 +95,5 @@ app.post('/api/verificar', (req, res) => {
 });
 
 app.listen(PORT, () => {
-    console.log(Servidor rodando na porta ${PORT});
+    console.log(`Servidor rodando na porta ${PORT}`);
 });

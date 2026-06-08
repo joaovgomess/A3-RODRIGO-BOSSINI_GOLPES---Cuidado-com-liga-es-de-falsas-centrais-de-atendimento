@@ -31,10 +31,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (dados.oficial) {
                 divResultado.classList.add('oficial');
-                divResultado.textContent = ✅ Número Oficial: Este telefone pertence ao banco ${dados.banco}.;
+                divResultado.textContent = `✅ Número Oficial: Este telefone pertence ao banco ${dados.banco}.`;
             } else {
                 divResultado.classList.add('fraude');
-                divResultado.textContent = ⚠️ Possível Fraude: Este número não consta na base de telefones oficiais.;
+                divResultado.textContent = `⚠️ Possível Fraude: Este número não consta na base de telefones oficiais.`;
             }
 
         } catch (erro) {
